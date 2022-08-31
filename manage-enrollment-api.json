@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "3dd4c160-4f6c-4d3d-b384-807a3e657362",
+		"name": "manage-enrollment-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Neles Rodrigues\",\n    \"cpf\": \"151.686.860-95\",\n    \"birthdate\": \"01/09/1922\",\n    \"payment_method\": \"credit_card\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/students",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/students/?page=1&count=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"students",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "enrollments",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "billing",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin_ops",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 1200000,\n    \"installments\": 6,\n    \"due_day\": 30,\n    \"student_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/enrollments",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"enrollments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/enrollments/?page=1&count=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"enrollments",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

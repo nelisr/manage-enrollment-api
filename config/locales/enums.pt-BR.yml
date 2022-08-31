@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    enums:
+      student:
+        payment_method:
+          credit_card: Cartão de Crédito
+          boleto: Boleto
+      bill:
+        status:
+          open: Em Aberto
+          pending: Pendente
+          paid: Pago 
