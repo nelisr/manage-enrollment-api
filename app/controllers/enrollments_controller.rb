@@ -3,7 +3,12 @@ class EnrollmentsController < BasicAuthController
   def index
     enrollments = Enrollment.page(params[:page]).per(params[:count])
 
-    paginate json: enrollments, each_serializer: EnrollmentSerializer
+    paginate json: enrollments, 
+             root: "items",
+             meta: params[:page].to_i,
+             meta_key: "page",
+             adapter: :json,
+             each_serializer: EnrollmentSerializer
   end
 
   # POST /enrollments
@@ -11,15 +16,18 @@ class EnrollmentsController < BasicAuthController
     enrollment = Enrollment.new enrollment_params
 
     if enrollment.save_and_generate_bills
-      render json: enrollment, status: :created             
+      render json: enrollment,             
+             status: :created             
     else 
-      render json: { errors: enrollment.errors }, status: :unprocessable_entity
+      render json: { errors: enrollment.errors }, 
+             status: :unprocessable_entity
     end   
   end
 
   private 
 
   def enrollment_params
-    params.require(:enrollment).permit(:amount, :installments, :due_day, :student_id)        
+    params.require(:enrollment)
+          .permit(:amount, :installments, :due_day, :student_id)        
   end
 end

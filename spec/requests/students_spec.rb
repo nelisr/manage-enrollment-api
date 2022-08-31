@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "Students", type: :request do
-  describe "GET /index" do
+  let(:url) { "/students" }    
+
+  describe "#index GET /students" do
     it "returns http success" do
-      get "/students/index"
+      get url
       expect(response).to have_http_status(:success)
     end
-  end
+  end # index
 
-  describe "GET /create" do
+  describe "#create POST /students" do        
     it "returns http success" do
-      get "/students/create"
-      expect(response).to have_http_status(:success)
+      get url
+      expect(response).to have_http_status(:ok)
     end
-  end
-
+  end # create
 end
